@@ -1,0 +1,60 @@
+:root{--oro:#f2c75c;--azul1:rgba(26,58,156,.80);--azul2:rgba(8,22,78,.88);--linea:#eef1ff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#0e1430;color:#fff;font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+#juego{max-width:1000px;height:100%;margin:0 auto;display:flex;flex-direction:column;position:relative;overflow:hidden;background:#fff}
+#fondo{position:absolute;inset:0;background:#fff center/cover no-repeat}
+
+/* Ventana estilo menú de batalla: azul translúcido con doble borde */
+.ventana{background:linear-gradient(180deg,var(--azul1),var(--azul2));border:2px solid var(--linea);border-radius:10px;
+  box-shadow:inset 0 0 0 2px #3354c8,inset 0 0 16px rgba(0,0,20,.55),0 4px 14px rgba(0,0,30,.35);backdrop-filter:blur(2px);color:#fff}
+
+#escenario{position:relative;flex:1;min-height:260px;z-index:1}
+.mini{position:absolute;top:10px;width:218px;padding:8px 12px 10px;font-size:12px}
+#v-stats{left:10px}#v-vinc{right:10px}
+.mini h4{margin:0;font-size:13px;color:var(--oro);font-weight:700}
+.mini .sub{opacity:.85;margin-bottom:4px}
+.fila2{display:flex;align-items:center;gap:6px;line-height:1.55}
+.fila2 span{flex:0 0 78px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila2 b{width:16px;text-align:right}
+.barra{height:7px;background:#ffffff26;border-radius:4px;flex:1;max-width:220px}
+.barra i{display:block;height:100%;background:var(--oro);border-radius:4px}
+
+.slot{position:absolute;bottom:14px}
+#izq{left:9%}#der{right:9%}
+.pj{width:130px;height:200px;border-radius:6px;display:flex;align-items:flex-end;justify-content:center;padding:8px;color:#fff;font-weight:700;
+  border:2px solid #fff8;text-shadow:0 1px 3px #0008;opacity:.6;transition:opacity .2s,transform .2s}
+.pj.habla{opacity:1;transform:translateY(-8px);border-color:#fff}
+.pj.grande{width:160px;height:245px}.pj.chico{width:105px;height:158px}
+
+#caja{position:relative;z-index:2;margin:0 12px 12px;padding:14px 18px 16px;min-height:200px;max-height:50%;overflow-y:auto}
+#hablante{display:inline-block;min-height:1.5em;margin-bottom:6px;padding-bottom:2px;border-bottom:2px solid var(--oro);color:var(--oro);font-weight:700}
+#hablante:empty{border-bottom-color:transparent}
+#texto{margin:0 0 10px;font-size:17px;line-height:1.55;max-width:70ch;text-shadow:0 1px 2px #0006}
+#opciones{display:flex;flex-direction:column}
+button{font:inherit;color:#fff;cursor:pointer;text-align:left;background:transparent;border:0;border-bottom:1px solid #ffffff2e;
+  padding:9px 10px 9px 28px;position:relative}
+button::before{content:"\25B6";position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--oro);opacity:0}
+button:hover:not(:disabled),button:focus-visible{background:#ffffff1f;outline:none}
+button:hover:not(:disabled)::before,button:focus-visible::before{opacity:1}
+button small{display:block;font-size:12px;color:var(--oro);opacity:.95}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:disabled small{color:#fff}
+
+#pantalla{position:absolute;inset:10px;z-index:5;padding:22px 22px;overflow-y:auto;background:linear-gradient(180deg,#1d3fa6,#0a1c62)}
+#pantalla h2{margin:0 0 8px;font-size:26px;color:var(--oro)}
+#pantalla h3{margin:16px 0 4px;color:var(--oro);font-size:15px}
+#pantalla p,#pantalla li{max-width:62ch}
+.fila{display:flex;align-items:center;gap:12px;margin:6px 0}
+.fila span{min-width:190px}
+.fila button{padding:2px 14px;text-align:center;border:1.5px solid var(--linea);border-radius:6px}
+.fila button::before,.acciones button::before{display:none}
+.acciones{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.acciones button{padding:9px 18px;border:2px solid var(--linea);border-radius:8px;text-align:center}
+
+@media(max-width:640px){
+  .mini{width:47%;font-size:10.5px;padding:6px 8px}.mini .sub{display:none}.fila2 span{flex-basis:60px}
+  .pj{width:84px;height:130px;font-size:12px}.pj.grande{width:100px;height:160px}.pj.chico{width:70px;height:106px}
+  #izq{left:5%}#der{right:5%}#texto{font-size:16px}#caja{margin:0 8px 8px;min-height:190px}.fila span{min-width:130px}
+}
+@media(prefers-reduced-motion:reduce){.pj{transition:none}}
